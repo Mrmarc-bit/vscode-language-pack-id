@@ -56,7 +56,6 @@ def build_vsix():
       <Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
       <Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="" />
       <Property Id="Microsoft.VisualStudio.Code.ExtensionKind" Value="ui,workspace" />
-      <Property Id="Microsoft.VisualStudio.Code.LocalizedLanguages" Value="id" />
       <Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="{repo_url}" />
       <Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="{repo_url}" />
       <Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="{repo_url}" />
@@ -65,7 +64,7 @@ def build_vsix():
       <Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
       <Property Id="Microsoft.VisualStudio.Services.Content.Pricing" Value="Free"/>
     </Properties>
-    <License>extension/LICENSE</License>
+    <License>extension/LICENSE.txt</License>
     <Icon>extension/icon.png</Icon>
   </Metadata>
   <Installation>
@@ -75,7 +74,7 @@ def build_vsix():
   <Assets>
     <Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true"/>
     <Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true"/>
-    <Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE" Addressable="true"/>
+    <Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE.txt" Addressable="true"/>
     <Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/icon.png" Addressable="true"/>
   </Assets>
 </PackageManifest>"""
@@ -88,6 +87,9 @@ def build_vsix():
         src = os.path.join(current_dir, rf)
         if os.path.exists(src):
             files_to_pack.append((src, f"extension/{rf}"))
+            if rf == "LICENSE":
+                # Marketplace mewajibkan ekstensi .txt untuk lisensi agar dikenali oleh [Content_Types].xml
+                files_to_pack.append((src, "extension/LICENSE.txt"))
 
     # translations/main.i18n.json
     main_i18n = os.path.join(current_dir, "translations", "main.i18n.json")

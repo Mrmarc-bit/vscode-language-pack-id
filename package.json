@@ -1,8 +1,8 @@
 {
   "name": "indonesian-language-pack",
   "displayName": "Bahasa Indonesia - Indonesian Language Pack",
-  "description": "Paket Bahasa Indonesia resmi dan modern untuk Visual Studio Code",
-  "version": "1.144.3",
+  "description": "Paket Bahasa Indonesia modern dan komprehensif untuk antarmuka Visual Studio Code",
+  "version": "1.144.4",
   "publisher": "MarufMuchlisin",
   "license": "MIT",
   "homepage": "https://github.com/Mrmarc-bit/vscode-language-pack-id#readme",
