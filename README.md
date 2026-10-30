@@ -5,7 +5,7 @@
 # 🇮🇩 Paket Bahasa Indonesia untuk Visual Studio Code (Modern)
 ### *Official-Standard Indonesian Language Pack for Visual Studio Code & Antigravity IDE*
 
-[![VS Code Marketplace Version](https://img.shields.io/badge/marketplace-v1.144.2-blue.svg?logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=MarufMuchlisin.vscode-language-pack-id)
+[![VS Code Marketplace Version](https://img.shields.io/badge/marketplace-v1.144.2-blue.svg?logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=MarufMuchlisin.indonesian-language-pack)
 [![VS Code Engine](https://img.shields.io/badge/vscode-%5E1.80.0+-blueviolet.svg?logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
 [![Strings Translated](https://img.shields.io/badge/strings-32%2C645%20terjemahan-success.svg)](translations/main.i18n.json)
 [![Built-in Extensions](https://img.shields.io/badge/extensions-92%20bawaan-teal.svg)](translations/extensions/)
@@ -65,7 +65,7 @@ Proyek ini dibangun untuk **menghidupkan kembali, memodernisasi, dan memelihara 
 
 ### Metode 2: Pasang Manual Menggunakan Berkas `.vsix`
 Jika Anda mengunduh dari rilis GitHub atau ingin memasang secara offline:
-1. Unduh berkas **`vscode-language-pack-id-1.144.2.vsix`** dari [Halaman Rilis GitHub](https://github.com/Mrmarc-bit/vscode-language-pack-id/releases) atau dari folder root repositori ini.
+1. Unduh berkas **`indonesian-language-pack-1.144.2.vsix`** dari [Halaman Rilis GitHub](https://github.com/Mrmarc-bit/vscode-language-pack-id/releases) atau dari folder root repositori ini.
 2. Di VS Code, buka panel **Ekstensi** (`Cmd + Shift + X` / `Ctrl + Shift + X`).
 3. Klik ikon menu titik tiga **`...`** (Views and More Actions) di kanan atas panel Ekstensi.
 4. Pilih **Install from VSIX...** (*Pasang dari VSIX...*).
@@ -117,7 +117,7 @@ Berikut panduan langkah demi langkah memublikasikan ekstensi ini ke **Microsoft 
 
 ### Persyaratan Awal:
 * Memiliki akun Microsoft / GitHub.
-* Berkas paket biner `vscode-language-pack-id-1.144.2.vsix` (dihasilkan oleh `python3 scripts/build_vsix.py`).
+* Berkas paket biner `indonesian-language-pack-1.144.2.vsix` (dihasilkan oleh `python3 scripts/build_vsix.py`).
 
 ---
 
@@ -139,7 +139,7 @@ Metode ini adalah cara paling cepat, tidak memerlukan instalasi terminal tambaha
    * Pilih **Visual Studio Code**.
    * Seret (*drag-and-drop*) atau pilih berkas:
      ```
-     vscode-language-pack-id-1.144.2.vsix
+     indonesian-language-pack-1.144.2.vsix
      ```
    * Marketplace akan memvalidasi manifes dan ikon secara otomatis.
 
@@ -207,7 +207,7 @@ python3 scripts/build_vsix.py
 ├── README.md                             # Dokumentasi resmi proyek
 ├── LICENSE                               # Lisensi open-source MIT
 ├── icon.png                              # Ikon resmi paket bahasa (128x128)
-├── vscode-language-pack-id-1.144.2.vsix   # Paket biner installer siap pasang
+├── indonesian-language-pack-1.144.2.vsix   # Paket biner installer siap pasang
 ├── translations/
 │   ├── main.i18n.json                    # Terjemahan inti VS Code (30.566 string, 2.344 modul)
 │   └── extensions/                       # Terjemahan 92 ekstensi bawaan resmi (Git, Debug, dll)

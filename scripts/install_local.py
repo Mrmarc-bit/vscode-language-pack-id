@@ -19,7 +19,7 @@ def main():
         pkg = json.load(f)
     
     publisher = pkg.get("publisher", "MarufMuchlisin")
-    name = pkg.get("name", "vscode-language-pack-id")
+    name = pkg.get("name", "indonesian-language-pack")
     version = pkg.get("version", "1.144.0")
     target_folder_name = f"{publisher}.{name}-{version}"
 

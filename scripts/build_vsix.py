@@ -17,7 +17,7 @@ def build_vsix():
         pkg = json.load(f)
 
     publisher = pkg.get("publisher", "MarufMuchlisin")
-    name = pkg.get("name", "vscode-language-pack-id")
+    name = pkg.get("name", "indonesian-language-pack")
     version = pkg.get("version", "1.144.2")
     display_name = pkg.get("displayName", "Indonesian Language Pack for Visual Studio Code")
     description = pkg.get("description", "Paket Bahasa Indonesia resmi dan modern untuk Visual Studio Code")
