@@ -1,141 +1,246 @@
+<div align="center">
+
+<img src="icon.png" alt="Logo Paket Bahasa Indonesia" width="128" height="128" />
+
 # 🇮🇩 Paket Bahasa Indonesia untuk Visual Studio Code (Modern)
+### *Official-Standard Indonesian Language Pack for Visual Studio Code & Antigravity IDE*
 
-> **Membuka akses pemrograman bagi seluruh pengembang Indonesia dengan antarmuka yang ramah, intuitif, dan terkini.**
+[![VS Code Marketplace Version](https://img.shields.io/badge/marketplace-v1.144.2-blue.svg?logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=mrmarc.vscode-language-pack-id)
+[![VS Code Engine](https://img.shields.io/badge/vscode-%5E1.80.0+-blueviolet.svg?logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
+[![Strings Translated](https://img.shields.io/badge/strings-32%2C645%20terjemahan-success.svg)](translations/main.i18n.json)
+[![Built-in Extensions](https://img.shields.io/badge/extensions-92%20bawaan-teal.svg)](translations/extensions/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+[![GitHub Repository](https://img.shields.io/badge/github-Mrmarc--bit%2Fvscode--language--pack--id-181717.svg?logo=github&logoColor=white)](https://github.com/Mrmarc-bit/vscode-language-pack-id)
 
-[![CI Validation](https://github.com/Mrmarc-bit/vscode-language-pack-id/actions/workflows/ci.yml/badge.svg)](https://github.com/Mrmarc-bit/vscode-language-pack-id/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <b>Membuka akses pemrograman bagi seluruh talenta digital, pelajar, dan pengembang perangkat lunak di Indonesia dengan antarmuka yang ramah, baku, dan 100% modern.</b>
+</p>
+
+[Fitur Utama](#-fitur-unggulan) •
+[Cara Pemasangan](#-cara-pemasangan) •
+[Cara Mengaktifkan](#-cara-mengaktifkan-bahasa-indonesia) •
+[Glosarium Baku](#-pedoman-terjemahan-glosarium) •
+[Panduan Publikasi Marketplace](#-panduan-publikasi-ke-visual-studio-marketplace) •
+[Kontribusi](#-kontribusi)
+
+</div>
 
 ---
 
-## 💡 Latar Belakang & Masalah
+## 💡 Mengapa Proyek Ini Dibangun?
 
-Visual Studio Code adalah editor kode paling populer di dunia. Namun bagi pelajar pemula, siswa SMK, mahasiswa, maupun programmer yang baru memulai, antarmuka berbahasa Inggris seringkali menjadi tembok penghalang pertama.
+Visual Studio Code adalah editor kode paling populer di dunia. Namun, paket bahasa Indonesia resmi Microsoft sebelumnya (`MS-CEINTL.vscode-language-pack-id`) telah **dihentikan pengembangannya sejak tahun 2020** (terhenti di VS Code v1.48 dengan hanya ~6.000 string) dan diarsipkan ke `vscode-loc-deprecated`.
 
-Ekstensi Bahasa Indonesia resmi Microsoft sebelumnya (`MS-CEINTL.vscode-language-pack-id`) telah **dihentikan pengembangannya sejak tahun 2020** dan dipindahkan ke `vscode-loc-deprecated`. Akibatnya:
-* Terdapat **lebih dari 18.000+ teks antarmuka baru** di VS Code modern yang tidak memiliki terjemahan sama sekali.
-* Menu-menu baru, palet perintah, panel kontrol versi (*Git*), dan pengaturan editor tercampur aduk antara bahasa Indonesia dan Inggris.
-* Banyak pemula kebingungan memahami fungsi-fungsi penting editor.
+Akibatnya, pada VS Code versi modern saat ini:
+* **Lebih dari 23.000+ string antarmuka baru** tidak memiliki terjemahan sama sekali dan tetap tampil dalam bahasa Inggris.
+* Menu bar, menu klik-kanan, dan kotak dialog tampil tidak konsisten dengan campuran kata yang membingungkan pemula.
+* Fitur-fitur generasi baru seperti **AI Chat, Agen Otonom, Sesi, Kanvas Interaktif, dan Server MCP** tidak memiliki padanan bahasa Indonesia yang tepat.
 
-Proyek ini dibangun untuk **menghidupkan kembali, memodernisasi, dan memelihara** Paket Bahasa Indonesia untuk Visual Studio Code secara berkelanjutan dengan bantuan otomasi dan komunitas open source Indonesia.
+Proyek ini dibangun untuk **menghidupkan kembali, memodernisasi, dan memelihara Paket Bahasa Indonesia berstandar resmi** untuk Visual Studio Code dan Antigravity IDE secara berkelanjutan.
 
 ---
 
-## ⚡ Coba Langsung di VS Code Anda (Uji Coba Lokal 1 Menit)
+## ✨ Fitur Unggulan
 
-Anda tidak perlu menunggu ekstensi ini rilis di Marketplace untuk mencobanya di komputer Anda!
+| Fitur | Cakupan | Penjelasan |
+| :--- | :---: | :--- |
+| **Terjemahan Inti Lengkap** | **30.566 String** | Mencakup seluruh 2.344 modul inti antarmuka VS Code dari instalasi modern terbaru. |
+| **Menu Bar & Mnemonik Presisi** | **100%** | Seluruh menu bar (*Berkas, Ubah, Pilihan, Tampilan, Buka, Jalankan, Terminal, Jendela, Bantuan*) dilengkapi akses cepat keyboard (`&&`). |
+| **92 Ekstensi Bawaan Resmi** | **2.131 String** | Ekstensi bawaan seperti *Git, Markdown, TypeScript, Python/Pylance, JSON, HTML, CSS, Emmet*, dan *Debugger* diterjemahkan penuh. |
+| **Dukungan AI & Antigravity IDE** | **Lengkap** | Terjemahan khusus untuk menu Obrolan AI, Kustomisasi Agen, Kanvas Interaktif, Server MCP, Kumpulan Alat, dan Migrasi. |
+| **Glosarium Standar KBBI & Industri** | **Baku** | Mengacu pada KBBI dan kebiasaan pengembang Indonesia tanpa merusak istilah teknis universal (*Git, Commit, Branch, Terminal, Breakpoint*). |
+| **Bebas Dependensi Node / Eksternal** | **Mandiri** | Dilengkapi script python mandiri untuk validasi, build `.vsix`, dan instalasi lokal tanpa memerlukan instalasi npm global. |
 
-### 1. Tautkan ekstensi ke instalasi VS Code lokal
-Jalankan perintah berikut di terminal:
-```bash
-python3 scripts/install_local.py
-```
+---
 
-### 2. Aktifkan Bahasa Indonesia di VS Code
-1. Buka (atau muat ulang) aplikasi **Visual Studio Code**.
-2. Tekan pintasan keyboard:
+## 📦 Cara Pemasangan
+
+### Metode 1: Pasang dari Visual Studio Marketplace (Rekomendasi)
+1. Buka aplikasi **Visual Studio Code** atau **Antigravity IDE**.
+2. Masuk ke tab **Extensions / Ekstensi** (`Cmd + Shift + X` di macOS atau `Ctrl + Shift + X` di Windows/Linux).
+3. Cari: `Indonesian Language Pack` oleh `mrmarc`.
+4. Klik **Install**.
+
+---
+
+### Metode 2: Pasang Manual Menggunakan Berkas `.vsix`
+Jika Anda mengunduh dari rilis GitHub atau ingin memasang secara offline:
+1. Unduh berkas **`vscode-language-pack-id-1.144.2.vsix`** dari [Halaman Rilis GitHub](https://github.com/Mrmarc-bit/vscode-language-pack-id/releases) atau dari folder root repositori ini.
+2. Di VS Code, buka panel **Ekstensi** (`Cmd + Shift + X` / `Ctrl + Shift + X`).
+3. Klik ikon menu titik tiga **`...`** (Views and More Actions) di kanan atas panel Ekstensi.
+4. Pilih **Install from VSIX...** (*Pasang dari VSIX...*).
+5. Pilih berkas `.vsix` yang telah diunduh.
+
+---
+
+## 🌐 Cara Mengaktifkan Bahasa Indonesia
+
+Setelah paket terpasang, aktifkan bahasa tampilan dengan langkah mudah berikut:
+
+1. Tekan pintasan keyboard:
    * **macOS**: `Cmd + Shift + P`
    * **Windows / Linux**: `Ctrl + Shift + P`
-3. Ketik perintah: **`Configure Display Language`** lalu tekan `Enter`.
-4. Pilih opsi **`Bahasa Indonesia`**.
-5. Klik tombol **Restart** saat diminta.
-6. 🎉 **Selesai!** Seluruh antarmuka VS Code Anda kini tampil dalam Bahasa Indonesia.
+2. Ketik perintah: **`Configure Display Language`** lalu tekan `Enter`.
+3. Pilih opsi **`Bahasa Indonesia`**.
+4. Klik tombol **Restart** saat muncul notifikasi konfirmasi.
+5. 🎉 **Selamat!** Seluruh antarmuka editor Anda kini telah menggunakan Bahasa Indonesia yang bersih dan nyaman.
 
 ---
 
-## 📂 Struktur Repositori
+## 📖 Pedoman Terjemahan (Glosarium)
 
-```text
-├── package.json              # Konfigurasi manifes Language Pack
-├── GLOSSARY.md               # Pedoman baku istilah teknis pemrograman Indonesia
-├── icon.png                  # Ikon resmi paket bahasa (128x128)
-├── translations/
-│   ├── main.i18n.json        # Terjemahan inti VS Code (Menu, Penjelajah, Pengaturan)
-│   └── extensions/           # Terjemahan modul ekstensi bawaan (Git, Terminal, Debug, dll)
-├── scripts/
-│   ├── install_local.py      # Script penaut lokal (~/.vscode/extensions)
-│   ├── validate.py           # Validasi integritas JSON & placeholder ({0}, {1})
-│   ├── sync_upstream.py      # Sinkronisasi & deteksi teks baru dari rilis VS Code global
-│   └── translate_ai.py       # Penerjemahan otomatis batch dengan AI (Gemini API)
-└── .github/workflows/        # Automasi CI / CD GitHub Actions
-```
+Kami memegang teguh prinsip bahwa antarmuka harus **mudah dipahami pemula tanpa menghilangkan istilah teknis universal**:
 
----
-
-## 🛠️ Cara Kerja Otomasi & Alur Pengembangan
-
-### 1. Memeriksa String Terbaru dari Upstream
-Untuk memeriksa teks baru apa saja yang ditambahkan pada rilis VS Code terbaru dan menghitung persentase terjemahan:
-```bash
-python3 scripts/sync_upstream.py
-```
-*Script ini akan membandingkan data lokal dengan upstream resmi Microsoft, menampilkan tingkat kelengkapan terjemahan, dan mengekspor teks yang belum diterjemahkan ke `translations/missing_translations.json`.*
-
-### 2. Menerjemahkan Batch Otomatis Menggunakan AI
-Ekstensi ini dilengkapi dengan script penerjemah otomatis cerdas yang memahami istilah *software engineering*:
-```bash
-export GEMINI_API_KEY="kunci-api-gemini-anda"
-python3 scripts/translate_ai.py --limit-modules 5
-```
-
-### 3. Validasi Integritas File
-Pastikan semua file JSON valid dan tidak ada placeholder yang rusak:
-```bash
-python3 scripts/validate.py
-```
-
----
-
-## 📖 Pedoman Terjemahan (*Glossary*)
-
-Kami berpegang teguh pada prinsip bahwa **antarmuka harus mudah dipahami pemula tanpa menghilangkan istilah teknis universal**:
-
-| Istilah Asli | Terjemahan | Keterangan |
+| Istilah Asli (English) | Padanan Terjemahan | Konteks & Catatan |
 | :--- | :--- | :--- |
-| **File / Folder** | Berkas / Folder | Sesuai kelaziman & KBBI |
-| **Save / Save As** | Simpan / Simpan Sebagai... | Sederhana & jelas |
-| **Explorer** | Penjelajah | Panel berkas di sisi kiri |
-| **Source Control** | Kontrol Versi | Panel Git |
-| **Command Palette** | Palet Perintah | Pintasan `Ctrl+Shift+P` |
-| **Terminal** | Terminal | Dipertahankan (bukan 'stasiun') |
-| **Debug** | Debug | Dipertahankan (istilah baku pemrograman) |
-| **Git Commit / Push** | Komit (*Commit*) / Dorong (*Push*) | Dipertahankan istilah Git aslinya |
+| **File / Folder** | **Berkas / Folder** | Sesuai kelaziman KBBI & sistem operasi modern |
+| **Workspace** | **Ruang Kerja** | Konsep multi-folder project pada VS Code |
+| **Save / Save As / Save All** | **Simpan / Simpan Sebagai... / Simpan Semua** | Tindakan penyimpanan dokumen |
+| **Undo / Redo** | **Urungkan / Ulangi** | Tindakan riwayat edit |
+| **Command Palette** | **Palet Perintah** | Akses cepat perintah editor (`Cmd/Ctrl+Shift+P`) |
+| **Explorer** | **Penjelajah** | Panel manajemen berkas di bilah sisi |
+| **Source Control** | **Kontrol Sumber** | Panel integrasi Git / Version Control |
+| **Terminal** | **Terminal** | Dipertahankan sebagai istilah baku teknis |
+| **Output / Problems** | **Keluaran / Masalah** | Panel log dan deteksi error kode |
+| **Breakpoint** | **Titik Henti** | Titik penghentian eksekusi pada debugging |
+| **Debug / Debugging** | **Debug / Debugging** | Dipertahankan sebagai istilah baku rekayasa perangkat lunak |
+| **Git Commit / Branch / Push / Pull** | **Commit / Cabang / Push / Pull** | Istilah ekosistem Git universal dipertahankan |
+| **Canvases / MCP Servers** | **Kanvas / Server MCP** | Istilah antarmuka agen AI modern |
 
-Baca panduan lengkapnya di [GLOSSARY.md](GLOSSARY.md).
+> 📌 Baca pedoman lengkap istilah teknologi di [GLOSSARY.md](GLOSSARY.md).
 
 ---
 
-## 🚀 Memublikasikan ke Marketplace
+## 🚀 Panduan Publikasi ke Visual Studio Marketplace
 
-Jika Anda ingin memaketkan dan merilis ekstensi ini ke Visual Studio Marketplace atau Open VSX:
+Berikut panduan langkah demi langkah memublikasikan ekstensi ini ke **Microsoft Visual Studio Marketplace** agar dapat diunduh oleh jutaan developer di seluruh dunia:
 
-1. Pasang alat pemaket resmi Microsoft:
+### Persyaratan Awal:
+* Memiliki akun Microsoft / GitHub.
+* Berkas paket biner `vscode-language-pack-id-1.144.2.vsix` (dihasilkan oleh `python3 scripts/build_vsix.py`).
+
+---
+
+### CARA 1: Unggah Langsung via Web Portal Marketplace (Paling Mudah)
+
+Metode ini adalah cara paling cepat, tidak memerlukan instalasi terminal tambahan atau token Azure DevOps:
+
+1. **Buka Portal Manajemen Marketplace**:
+   Kunjungi [https://marketplace.visualstudio.com/manage](https://marketplace.visualstudio.com/manage) dan masuk dengan akun Microsoft atau GitHub Anda.
+
+2. **Buat Publisher (Penerbit)**:
+   * Klik tombol **Create publisher**.
+   * **Name (Identifier)**: Masukkan ID unik tanpa spasi, misalnya: `mrmarc` *(pastikan nilainya sama dengan nilai `"publisher"` di `package.json`)*.
+   * **Display Name**: Masukkan nama tampilan Anda, misalnya: `Maruf Muchlisin`.
+   * Klik **Create**.
+
+3. **Unggah Berkas Ekstensi**:
+   * Di dalam halaman penerbit Anda, klik tombol dropdown **`+ New extension`**.
+   * Pilih **Visual Studio Code**.
+   * Seret (*drag-and-drop*) atau pilih berkas:
+     ```
+     vscode-language-pack-id-1.144.2.vsix
+     ```
+   * Marketplace akan memvalidasi manifes dan ikon secara otomatis.
+
+4. **Selesai & Terbit**:
+   * Dalam 2–5 menit, sistem verifikasi Microsoft akan memproses paket Anda.
+   * Status akan berubah dari *Verifying* menjadi *Published*. Ekstensi Anda kini resmi tersedia untuk publik di Visual Studio Code Marketplace!
+
+---
+
+### CARA 2: Publikasi Otomatis via CLI (`@vscode/vsce`)
+
+Jika Anda ingin mempublikasikan pembaruan langsung dari baris perintah terminal:
+
+1. **Buat Personal Access Token (PAT) di Azure DevOps**:
+   * Masuk ke [https://dev.azure.com](https://dev.azure.com).
+   * Klik ikon profil di pojok kanan atas ➔ **Personal access tokens**.
+   * Klik **+ New Token**.
+   * Pada bagian **Organization**, pilih **All accessible organizations**.
+   * Pada bagian **Scopes**, pilih **Marketplace** ➔ centang **Acquisition** dan **Manage**.
+   * Klik **Create** dan salin token yang dihasilkan.
+
+2. **Pasang Alat Pemaket Resmi Microsoft (`vsce`)**:
    ```bash
    npm install -g @vscode/vsce
    ```
-2. Buat paket biner `.vsix`:
+
+3. **Login ke Akun Penerbit**:
    ```bash
-   vsce package
+   vsce login mrmarc
+   # Tempelkan Personal Access Token (PAT) saat diminta
    ```
-3. Terbitkan langsung ke Visual Studio Marketplace:
+
+4. **Terbitkan ke Marketplace**:
    ```bash
    vsce publish
    ```
 
 ---
 
+## 🛠️ Alur Kerja & Pengembangan (*Developer Tools*)
+
+Repositori ini dilengkapi dengan toolchain Python bawaan yang dapat dijalankan tanpa dependensi berat:
+
+```bash
+# 1. Validasi sintaks, integritas placeholder ({0}, {1}), dan pendaftaran lokal:
+python3 scripts/validate.py
+
+# 2. Sinkronisasi & deteksi string baru dari upstream VS Code Microsoft:
+python3 scripts/sync_upstream.py
+
+# 3. Regenerasi terjemahan menyeluruh (Core + 92 Ekstensi):
+python3 scripts/generate_ultimate_translation.py
+
+# 4. Bangun paket distribusi .vsix:
+python3 scripts/build_vsix.py
+```
+
+---
+
+## 📂 Struktur Repositori
+
+```text
+├── package.json                          # Manifes ekstensi resmi VS Code Language Pack
+├── GLOSSARY.md                           # Pedoman baku istilah teknologi pengembang
+├── README.md                             # Dokumentasi resmi proyek
+├── LICENSE                               # Lisensi open-source MIT
+├── icon.png                              # Ikon resmi paket bahasa (128x128)
+├── vscode-language-pack-id-1.144.2.vsix   # Paket biner installer siap pasang
+├── translations/
+│   ├── main.i18n.json                    # Terjemahan inti VS Code (30.566 string, 2.344 modul)
+│   └── extensions/                       # Terjemahan 92 ekstensi bawaan resmi (Git, Debug, dll)
+└── scripts/
+    ├── build_vsix.py                     # Pemaket mandiri VSIX berbasis zipfile Python
+    ├── generate_ultimate_translation.py  # Mesin penerjemah menyeluruh & pembersih hybrid
+    ├── install_local.py                  # Skrip penaut instalasi lokal
+    ├── validate.py                       # Skrip validasi format & placeholder
+    └── sync_upstream.py                  # Skrip pelacak pembaruan upstream Microsoft
+```
+
+---
+
 ## 🤝 Berkontribusi
 
-Kontribusi dari seluruh pengembang di Indonesia sangat disambut hangat!
-1. Lakukan *Fork* repositori ini.
-2. Buat *branch* fitur Anda (`git checkout -b fitur/terjemahan-terminal`).
-3. Lakukan terjemahan dengan mematuhi [GLOSSARY.md](GLOSSARY.md).
-4. Jalankan `python3 scripts/validate.py` untuk memastikan tidak ada kesalahan format.
-5. Buat *Pull Request* baru!
+Kami sangat mengapresiasi kontribusi dari komunitas pengembang Indonesia untuk terus menyempurnakan keakuratan istilah:
+
+1. **Fork** repositori ini ke akun GitHub Anda.
+2. Buat *branch* fitur Anda:
+   ```bash
+   git checkout -b fitur/penyempurnaan-istilah
+   ```
+3. Lakukan pengeditan sesuai kaidah di [GLOSSARY.md](GLOSSARY.md).
+4. Pastikan validasi berhasil:
+   ```bash
+   python3 scripts/validate.py
+   ```
+5. Commit perubahan Anda dan buat **Pull Request** ke repositori utama!
 
 ---
 
 ## 📄 Lisensi
 
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
-Ikon globe merupakan aset milik Visual Studio Code / Microsoft Corporation.
-
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).  
+Hak cipta Visual Studio Code dan ikon globe adalah milik **Microsoft Corporation**.
+Dirawat dengan penuh dedikasi oleh **[Maruf Muchlisin](https://github.com/Mrmarc-bit)** dan para kontributor open-source Indonesia.
