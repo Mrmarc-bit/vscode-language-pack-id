@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """
-Membangun berkas paket .vsix secara mandiri menggunakan modul zipfile Python standar.
-Menghasilkan berkas .vsix siap pasang tanpa memerlukan dependensi npm/vsce.
+Membangun berkas paket .vsix secara mandiri dengan spesifikasi resmi Microsoft Visual Studio Marketplace (OPC / Open Packaging Conventions).
+Kompatibel 100% dengan standar parser Azure DevOps / Visual Studio Marketplace.
 """
 
 import os
 import sys
 import json
 import zipfile
-import xml.etree.ElementTree as ET
 
 def build_vsix():
     current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
@@ -17,38 +16,57 @@ def build_vsix():
     with open(pkg_path, "r", encoding="utf-8") as f:
         pkg = json.load(f)
 
-    publisher = pkg.get("publisher", "mrmarc")
+    publisher = pkg.get("publisher", "MarufMuchlisin")
     name = pkg.get("name", "vscode-language-pack-id")
-    version = pkg.get("version", "1.144.0")
+    version = pkg.get("version", "1.144.2")
     display_name = pkg.get("displayName", "Indonesian Language Pack for Visual Studio Code")
-    description = pkg.get("description", "Paket Bahasa Indonesia untuk Visual Studio Code")
+    description = pkg.get("description", "Paket Bahasa Indonesia resmi dan modern untuk Visual Studio Code")
+    engine = pkg.get("engines", {}).get("vscode", "^1.80.0")
+    homepage = pkg.get("homepage", "https://github.com/Mrmarc-bit/vscode-language-pack-id#readme")
+    repo_url = pkg.get("repository", {}).get("url", "https://github.com/Mrmarc-bit/vscode-language-pack-id")
+    bugs_url = pkg.get("bugs", {}).get("url", "https://github.com/Mrmarc-bit/vscode-language-pack-id/issues")
 
     vsix_filename = f"{name}-{version}.vsix"
     vsix_filepath = os.path.join(current_dir, vsix_filename)
 
-    print(f"=== Membangun Paket VSIX: {vsix_filename} ===")
+    print(f"=== Membangun Paket VSIX Standar Resmi Marketplace: {vsix_filename} ===")
 
-    # 1. Buat [Content_Types].xml
+    # 1. Buat [Content_Types].xml resmi OPC
     content_types_xml = """<?xml version="1.0" encoding="utf-8"?>
-<Types xmlns="http://schemas.openformats.org/package/2006/content-types">
-  <Default Extension="vsixmanifest" ContentType="text/xml"/>
-  <Default Extension="json" ContentType="application/json"/>
-  <Default Extension="png" ContentType="image/png"/>
-  <Default Extension="md" ContentType="text/markdown"/>
-  <Default Extension="txt" ContentType="text/plain"/>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension=".vsixmanifest" ContentType="text/xml"/>
+  <Default Extension=".json" ContentType="application/json"/>
+  <Default Extension=".png" ContentType="image/png"/>
+  <Default Extension=".md" ContentType="text/markdown"/>
+  <Default Extension=".txt" ContentType="text/plain"/>
 </Types>"""
 
-    # 2. Buat extension.vsixmanifest
+    # 2. Buat extension.vsixmanifest resmi Microsoft VS Code Marketplace
     vsixmanifest_xml = f"""<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="{name}" Version="{version}" Language="en-US" Publisher="{publisher}"/>
+    <Identity Language="en-US" Id="{name}" Version="{version}" Publisher="{publisher}"/>
     <DisplayName>{display_name}</DisplayName>
     <Description xml:space="preserve">{description}</Description>
-    <Tags>language-pack, i18n, indonesian, bahasa indonesia</Tags>
+    <Tags>language-pack, i18n, indonesian, bahasa indonesia, terjemahan</Tags>
     <Categories>Language Packs</Categories>
-    <Icon>extension/icon.png</Icon>
+    <GalleryFlags>Public</GalleryFlags>
+    <Properties>
+      <Property Id="Microsoft.VisualStudio.Code.Engine" Value="{engine}" />
+      <Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
+      <Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="" />
+      <Property Id="Microsoft.VisualStudio.Code.ExtensionKind" Value="ui,workspace" />
+      <Property Id="Microsoft.VisualStudio.Code.LocalizedLanguages" Value="id" />
+      <Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="{repo_url}" />
+      <Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="{repo_url}" />
+      <Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="{repo_url}" />
+      <Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="{bugs_url}" />
+      <Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="{homepage}" />
+      <Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
+      <Property Id="Microsoft.VisualStudio.Services.Content.Pricing" Value="Free"/>
+    </Properties>
     <License>extension/LICENSE</License>
+    <Icon>extension/icon.png</Icon>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Code"/>
@@ -62,10 +80,9 @@ def build_vsix():
   </Assets>
 </PackageManifest>"""
 
-    # 3. Kumpulkan semua berkas yang akan dimasukkan ke dalam arsip
+    # 3. Kumpulkan seluruh berkas
     files_to_pack = []
     
-    # Berkas di root extension/
     root_files = ["package.json", "README.md", "LICENSE", "icon.png", "GLOSSARY.md"]
     for rf in root_files:
         src = os.path.join(current_dir, rf)
@@ -80,32 +97,29 @@ def build_vsix():
     # translations/extensions/*.i18n.json
     ext_dir = os.path.join(current_dir, "translations", "extensions")
     if os.path.exists(ext_dir):
-        for fn in sorted(os.listdir(ext_dir)):
-            if fn.endswith(".i18n.json"):
-                src = os.path.join(ext_dir, fn)
-                files_to_pack.append((src, f"extension/translations/extensions/{fn}"))
+        for ef in sorted(os.listdir(ext_dir)):
+            if ef.endswith(".json"):
+                src = os.path.join(ext_dir, ef)
+                files_to_pack.append((src, f"extension/translations/extensions/{ef}"))
 
-    # Buat berkas ZIP / VSIX
+    # 4. Tulis ke berkas arsip ZIP (VSIX)
     if os.path.exists(vsix_filepath):
         os.remove(vsix_filepath)
 
-    with zipfile.ZipFile(vsix_filepath, "w", zipfile.ZIP_DEFLATED) as zf:
-        zf.writestr("[Content_Types].xml", content_types_xml.strip())
-        zf.writestr("extension.vsixmanifest", vsixmanifest_xml.strip())
-        
+    with zipfile.ZipFile(vsix_filepath, "w", compression=zipfile.ZIP_DEFLATED) as z:
+        # Tambahkan manifest dan content types di root arsip
+        z.writestr("[Content_Types].xml", content_types_xml.strip())
+        z.writestr("extension.vsixmanifest", vsixmanifest_xml.strip())
+
+        # Tambahkan seluruh file isi ekstensi
         for src, arcname in files_to_pack:
-            zf.write(src, arcname)
+            z.write(src, arcname)
 
     size_mb = os.path.getsize(vsix_filepath) / (1024 * 1024)
-    print(f"✅ Paket VSIX berhasil dibuat: {vsix_filepath} ({size_mb:.2f} MB)")
-    print(f"   Total berkas dikemas: {len(files_to_pack) + 2} berkas")
-    print("\nCara memasang ke VS Code / Antigravity:")
-    print("1. Buka menu Extensions (Cmd + Shift + X).")
-    print("2. Klik ikon '...' (Views and More Actions) di pojok kanan atas panel Extensions.")
-    print("3. Pilih 'Install from VSIX...' (Pasang dari VSIX...).")
-    print(f"4. Pilih berkas: {vsix_filepath}")
-    print("5. Restart editor saat muncul notifikasi konfirmasi.")
+    print(f"✅ Paket VSIX Standar Marketplace berhasil dibuat: {vsix_filepath} ({size_mb:.2f} MB)")
+    print(f"   Total berkas terkemas: {len(files_to_pack) + 2} berkas")
+    print(f"   Publisher ID: {publisher}")
+    print(f"   Versi: {version}")
 
 if __name__ == "__main__":
     build_vsix()
-

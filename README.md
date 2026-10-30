@@ -5,7 +5,7 @@
 # 🇮🇩 Paket Bahasa Indonesia untuk Visual Studio Code (Modern)
 ### *Official-Standard Indonesian Language Pack for Visual Studio Code & Antigravity IDE*
 
-[![VS Code Marketplace Version](https://img.shields.io/badge/marketplace-v1.144.2-blue.svg?logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=mrmarc.vscode-language-pack-id)
+[![VS Code Marketplace Version](https://img.shields.io/badge/marketplace-v1.144.2-blue.svg?logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=MarufMuchlisin.vscode-language-pack-id)
 [![VS Code Engine](https://img.shields.io/badge/vscode-%5E1.80.0+-blueviolet.svg?logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
 [![Strings Translated](https://img.shields.io/badge/strings-32%2C645%20terjemahan-success.svg)](translations/main.i18n.json)
 [![Built-in Extensions](https://img.shields.io/badge/extensions-92%20bawaan-teal.svg)](translations/extensions/)
@@ -58,7 +58,7 @@ Proyek ini dibangun untuk **menghidupkan kembali, memodernisasi, dan memelihara 
 ### Metode 1: Pasang dari Visual Studio Marketplace (Rekomendasi)
 1. Buka aplikasi **Visual Studio Code** atau **Antigravity IDE**.
 2. Masuk ke tab **Extensions / Ekstensi** (`Cmd + Shift + X` di macOS atau `Ctrl + Shift + X` di Windows/Linux).
-3. Cari: `Indonesian Language Pack` oleh `mrmarc`.
+3. Cari: `Indonesian Language Pack` oleh `MarufMuchlisin`.
 4. Klik **Install**.
 
 ---
@@ -130,7 +130,7 @@ Metode ini adalah cara paling cepat, tidak memerlukan instalasi terminal tambaha
 
 2. **Buat Publisher (Penerbit)**:
    * Klik tombol **Create publisher**.
-   * **Name (Identifier)**: Masukkan ID unik tanpa spasi, misalnya: `mrmarc` *(pastikan nilainya sama dengan nilai `"publisher"` di `package.json`)*.
+   * **Name (Identifier)**: Masukkan ID unik tanpa spasi, misalnya: `MarufMuchlisin` *(pastikan nilainya sama dengan nilai `"publisher"` di `package.json`)*.
    * **Display Name**: Masukkan nama tampilan Anda, misalnya: `Maruf Muchlisin`.
    * Klik **Create**.
 
@@ -168,7 +168,7 @@ Jika Anda ingin mempublikasikan pembaruan langsung dari baris perintah terminal:
 
 3. **Login ke Akun Penerbit**:
    ```bash
-   vsce login mrmarc
+   vsce login MarufMuchlisin
    # Tempelkan Personal Access Token (PAT) saat diminta
    ```
 

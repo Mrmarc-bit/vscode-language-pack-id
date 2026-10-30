@@ -18,7 +18,7 @@ def main():
     with open(pkg_path, "r", encoding="utf-8") as f:
         pkg = json.load(f)
     
-    publisher = pkg.get("publisher", "mrmarc")
+    publisher = pkg.get("publisher", "MarufMuchlisin")
     name = pkg.get("name", "vscode-language-pack-id")
     version = pkg.get("version", "1.144.0")
     target_folder_name = f"{publisher}.{name}-{version}"
