@@ -1,11 +1,11 @@
 <div align="center">
 
-<img src="icon.png" alt="Logo Paket Bahasa Indonesia" width="128" height="128" />
+<img src="https://raw.githubusercontent.com/Mrmarc-bit/vscode-language-pack-id/main/icon.png" alt="Logo Paket Bahasa Indonesia" width="128" height="128" />
 
 # 🇮🇩 Paket Bahasa Indonesia untuk Visual Studio Code (Modern)
 ### *Official-Standard Indonesian Language Pack for Visual Studio Code & Antigravity IDE*
 
-[![VS Code Marketplace Version](https://img.shields.io/badge/marketplace-v1.144.2-blue.svg?logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=MarufMuchlisin.indonesian-language-pack)
+[![VS Code Marketplace Version](https://img.shields.io/badge/marketplace-v1.144.3-blue.svg?logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=MarufMuchlisin.indonesian-language-pack)
 [![VS Code Engine](https://img.shields.io/badge/vscode-%5E1.80.0+-blueviolet.svg?logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
 [![Strings Translated](https://img.shields.io/badge/strings-32%2C645%20terjemahan-success.svg)](translations/main.i18n.json)
 [![Built-in Extensions](https://img.shields.io/badge/extensions-92%20bawaan-teal.svg)](translations/extensions/)
@@ -20,7 +20,6 @@
 [Cara Pemasangan](#-cara-pemasangan) •
 [Cara Mengaktifkan](#-cara-mengaktifkan-bahasa-indonesia) •
 [Glosarium Baku](#-pedoman-terjemahan-glosarium) •
-[Panduan Publikasi Marketplace](#-panduan-publikasi-ke-visual-studio-marketplace) •
 [Kontribusi](#-kontribusi)
 
 </div>
@@ -65,7 +64,7 @@ Proyek ini dibangun untuk **menghidupkan kembali, memodernisasi, dan memelihara 
 
 ### Metode 2: Pasang Manual Menggunakan Berkas `.vsix`
 Jika Anda mengunduh dari rilis GitHub atau ingin memasang secara offline:
-1. Unduh berkas **`indonesian-language-pack-1.144.2.vsix`** dari [Halaman Rilis GitHub](https://github.com/Mrmarc-bit/vscode-language-pack-id/releases) atau dari folder root repositori ini.
+1. Unduh berkas **`indonesian-language-pack-1.144.3.vsix`** dari [Halaman Rilis GitHub](https://github.com/Mrmarc-bit/vscode-language-pack-id/releases) atau dari folder root repositori ini.
 2. Di VS Code, buka panel **Ekstensi** (`Cmd + Shift + X` / `Ctrl + Shift + X`).
 3. Klik ikon menu titik tiga **`...`** (Views and More Actions) di kanan atas panel Ekstensi.
 4. Pilih **Install from VSIX...** (*Pasang dari VSIX...*).
@@ -108,74 +107,6 @@ Kami memegang teguh prinsip bahwa antarmuka harus **mudah dipahami pemula tanpa 
 | **Canvases / MCP Servers** | **Kanvas / Server MCP** | Istilah antarmuka agen AI modern |
 
 > 📌 Baca pedoman lengkap istilah teknologi di [GLOSSARY.md](GLOSSARY.md).
-
----
-
-## 🚀 Panduan Publikasi ke Visual Studio Marketplace
-
-Berikut panduan langkah demi langkah memublikasikan ekstensi ini ke **Microsoft Visual Studio Marketplace** agar dapat diunduh oleh jutaan developer di seluruh dunia:
-
-### Persyaratan Awal:
-* Memiliki akun Microsoft / GitHub.
-* Berkas paket biner `indonesian-language-pack-1.144.2.vsix` (dihasilkan oleh `python3 scripts/build_vsix.py`).
-
----
-
-### CARA 1: Unggah Langsung via Web Portal Marketplace (Paling Mudah)
-
-Metode ini adalah cara paling cepat, tidak memerlukan instalasi terminal tambahan atau token Azure DevOps:
-
-1. **Buka Portal Manajemen Marketplace**:
-   Kunjungi [https://marketplace.visualstudio.com/manage](https://marketplace.visualstudio.com/manage) dan masuk dengan akun Microsoft atau GitHub Anda.
-
-2. **Buat Publisher (Penerbit)**:
-   * Klik tombol **Create publisher**.
-   * **Name (Identifier)**: Masukkan ID unik tanpa spasi, misalnya: `MarufMuchlisin` *(pastikan nilainya sama dengan nilai `"publisher"` di `package.json`)*.
-   * **Display Name**: Masukkan nama tampilan Anda, misalnya: `Maruf Muchlisin`.
-   * Klik **Create**.
-
-3. **Unggah Berkas Ekstensi**:
-   * Di dalam halaman penerbit Anda, klik tombol dropdown **`+ New extension`**.
-   * Pilih **Visual Studio Code**.
-   * Seret (*drag-and-drop*) atau pilih berkas:
-     ```
-     indonesian-language-pack-1.144.2.vsix
-     ```
-   * Marketplace akan memvalidasi manifes dan ikon secara otomatis.
-
-4. **Selesai & Terbit**:
-   * Dalam 2–5 menit, sistem verifikasi Microsoft akan memproses paket Anda.
-   * Status akan berubah dari *Verifying* menjadi *Published*. Ekstensi Anda kini resmi tersedia untuk publik di Visual Studio Code Marketplace!
-
----
-
-### CARA 2: Publikasi Otomatis via CLI (`@vscode/vsce`)
-
-Jika Anda ingin mempublikasikan pembaruan langsung dari baris perintah terminal:
-
-1. **Buat Personal Access Token (PAT) di Azure DevOps**:
-   * Masuk ke [https://dev.azure.com](https://dev.azure.com).
-   * Klik ikon profil di pojok kanan atas ➔ **Personal access tokens**.
-   * Klik **+ New Token**.
-   * Pada bagian **Organization**, pilih **All accessible organizations**.
-   * Pada bagian **Scopes**, pilih **Marketplace** ➔ centang **Acquisition** dan **Manage**.
-   * Klik **Create** dan salin token yang dihasilkan.
-
-2. **Pasang Alat Pemaket Resmi Microsoft (`vsce`)**:
-   ```bash
-   npm install -g @vscode/vsce
-   ```
-
-3. **Login ke Akun Penerbit**:
-   ```bash
-   vsce login MarufMuchlisin
-   # Tempelkan Personal Access Token (PAT) saat diminta
-   ```
-
-4. **Terbitkan ke Marketplace**:
-   ```bash
-   vsce publish
-   ```
 
 ---
 
