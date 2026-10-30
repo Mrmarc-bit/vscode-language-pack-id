@@ -7,7 +7,7 @@
   ],
   "version": "1.0.0",
   "contents": {
-    "displayName": "Windows Bat Language Basics",
-    "description": "Provides snippets, syntax highlighting, bracket matching and folding in Windows batch files."
+    "displayName": "jendela Bat Language Basics",
+    "description": "Provides snippets, syntax highlighting, bracket matching dan folding in jendela batch berkas."
   }
 }

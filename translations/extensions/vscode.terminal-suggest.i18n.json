@@ -7,9 +7,9 @@
   ],
   "version": "1.0.0",
   "contents": {
-    "description": "Extension to add terminal completions for zsh, bash, and fish terminals.",
-    "displayName": "Terminal Suggest for VS Code",
-    "view.name": "Terminal Suggest",
+    "description": "ekstensi to add terminal completions untuk zsh, bash, dan fish terminals.",
+    "displayName": "terminal Suggest untuk VS Code",
+    "view.name": "terminal Suggest",
     "terminal.integrated.suggest.clearCachedGlobals": "Bersihkan Suggest Cached Globals"
   }
 }

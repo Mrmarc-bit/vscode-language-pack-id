@@ -8,6 +8,6 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "Razor Language Basics",
-    "description": "Provides syntax highlighting, bracket matching and folding in Razor files."
+    "description": "Provides syntax highlighting, bracket matching dan folding in Razor berkas."
   }
 }

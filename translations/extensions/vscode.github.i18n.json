@@ -8,18 +8,18 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "GitHub",
-    "description": "GitHub features for VS Code",
-    "command.copyVscodeDevLink": "Salin vscode.dev Link",
+    "description": "GitHub features untuk VS Code",
+    "command.copyVscodeDevLink": "salin vscode.dev Link",
     "command.publish": "Publish to GitHub",
-    "command.openOnGitHub": "Buka on GitHub",
-    "command.openOnVscodeDev": "Buka in vscode.dev",
+    "command.openOnGitHub": "buka on GitHub",
+    "command.openOnVscodeDev": "buka in vscode.dev",
     "command.createPullRequest": "Buat PR",
-    "command.openPullRequest": "Buka PR",
-    "config.branchProtection": "Mengontrol apakah to query repository rules for GitHub repositories",
-    "config.gitAuthentication": "Mengontrol apakah to enable otomatis GitHub authentication for git perintah within VS Code.",
-    "config.gitProtocol": "Controls which protocol is used to clone a GitHub repository",
-    "config.showAvatar": "Mengontrol apakah to show the GitHub avatar of the commit author in various hovers (ex: Git blame, Timeline, kontrol versi Graph, etc.)",
-    "welcome.publishFolder": "You can directly publish this folder to a GitHub repository. Once published, you'll have access to source control features powered by Git and GitHub.\n[$(github) Publish to GitHub](command:github.publish)",
-    "welcome.publishWorkspaceFolder": "You can directly publish a workspace folder to a GitHub repository. Once published, you'll have access to source control features powered by Git and GitHub.\n[$(github) Publish to GitHub](command:github.publish)"
+    "command.openPullRequest": "buka PR",
+    "config.branchProtection": "Mengontrol apakah to query repository rules untuk GitHub repositories",
+    "config.gitAuthentication": "Mengontrol apakah to aktifkan automatic GitHub authentication untuk git commands within VS Code.",
+    "config.gitProtocol": "Mengontrol which protocol is used to clone a GitHub repository",
+    "config.showAvatar": "Mengontrol apakah to tampilkan the GitHub avatar of the commit author in various hovers (ex: Git blame, Timeline, Source Control Graph, etc.)",
+    "welcome.publishFolder": "You can directly publish this folder to a GitHub repository. Once published, you'll have access to source control features powered oleh Git dan GitHub.\n[$(github) Publish to GitHub](command:github.publish)",
+    "welcome.publishWorkspaceFolder": "You can directly publish a ruang kerja folder to a GitHub repository. Once published, you'll have access to source control features powered oleh Git dan GitHub.\n[$(github) Publish to GitHub](command:github.publish)"
   }
 }

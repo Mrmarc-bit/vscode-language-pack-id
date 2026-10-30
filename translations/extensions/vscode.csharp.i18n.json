@@ -8,6 +8,6 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "C# Language Basics",
-    "description": "Provides snippets, syntax highlighting, bracket matching and folding in C# files."
+    "description": "Provides snippets, syntax highlighting, bracket matching dan folding in C# berkas."
   }
 }

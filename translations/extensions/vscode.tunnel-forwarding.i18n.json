@@ -11,6 +11,6 @@
     "description": "Allows forwarding local ports to be accessible over the internet.",
     "category": "Port Forwarding",
     "command.showLog": "Tampilkan Log",
-    "command.restart": "Mulai Ulang Forwarding System"
+    "command.restart": "mulai ulang Forwarding System"
   }
 }

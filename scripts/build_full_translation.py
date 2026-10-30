@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Generator Lengkap Indonesian Language Pack untuk Visual Studio Code Modern.
+Generator Lengkap Indonesian Language Pack untuk Visual Studio Code Modern & Antigravity.
 Mengekstrak seluruh kunci & pesan dari instalasi resmi VS Code (nls.metadata.json),
-menggabungkan terjemahan yang sudah ada, menerapkan kamus & mesin terjemahan istilah IT,
-dan menghasilkan translations/main.i18n.json serta seluruh translations/extensions/*.i18n.json.
+memperbaiki seluruh mnemonik (&&), menerjemahkan menu utama, sesi, kustomisasi,
+antarmuka AI/Copilot, serta ekstensi bawaan.
 """
 
 import os
@@ -11,17 +11,9 @@ import sys
 import json
 import re
 
-# 1. Peta frasa eksak (Exact Phrase Dictionary)
+# 1. Kamus Frasa Bersih (Clean Exact Phrases) - Baik teks biasa maupun teks dengan &&
 EXACT_PHRASES = {
-    # Menu Atas (Top Menus)
-    "&File": "&Berkas",
-    "&Edit": "&Ubah",
-    "&Selection": "&Pilihan",
-    "&View": "&Tampilan",
-    "&Go": "&Buka",
-    "&Run": "&Jalankan",
-    "&Terminal": "&Terminal",
-    "&Help": "&Bantuan",
+    # Top Menus
     "File": "Berkas",
     "Edit": "Ubah",
     "Selection": "Pilihan",
@@ -29,34 +21,50 @@ EXACT_PHRASES = {
     "Go": "Buka",
     "Run": "Jalankan",
     "Terminal": "Terminal",
+    "Window": "Jendela",
     "Help": "Bantuan",
+    "Code": "Code",
 
     # File Menu Actions
     "New Text File": "Berkas Teks Baru",
+    "New File": "Berkas Baru",
     "New File...": "Berkas Baru...",
     "New Window": "Jendela Baru",
+    "New Window with Profile": "Jendela Baru dengan Profil",
+    "Open": "Buka",
     "Open...": "Buka...",
+    "Open File": "Buka Berkas",
     "Open File...": "Buka Berkas...",
+    "Open Folder": "Buka Folder",
     "Open Folder...": "Buka Folder...",
+    "Open Workspace": "Buka Ruang Kerja",
+    "Open Workspace...": "Buka Ruang Kerja...",
     "Open Workspace from File...": "Buka Ruang Kerja dari Berkas...",
     "Open Recent": "Buka Terkini",
+    "More...": "Lainnya...",
     "Reopen Closed Editor": "Buka Kembali Editor yang Ditutup",
     "Clear Recently Opened": "Bersihkan Daftar Terkini",
+    "Clear Recent": "Bersihkan Daftar Terkini",
     "Add Folder to Workspace...": "Tambahkan Folder ke Ruang Kerja...",
     "Save Workspace As...": "Simpan Ruang Kerja Sebagai...",
     "Duplicate Workspace": "Duplikasikan Ruang Kerja",
+    "Duplicate Workspace in New Window": "Duplikasikan Ruang Kerja di Jendela Baru",
     "Save": "Simpan",
     "Save As...": "Simpan Sebagai...",
     "Save All": "Simpan Semua",
+    "Save All in Group": "Simpan Semua dalam Grup",
+    "Save All Files": "Simpan Semua Berkas",
     "Auto Save": "Simpan Otomatis",
     "Preferences": "Preferensi",
     "Settings": "Pengaturan",
     "Revert File": "Kembalikan Berkas",
     "Close Editor": "Tutup Editor",
+    "Close All Editors": "Tutup Semua Editor",
     "Close Folder": "Tutup Folder",
     "Close Window": "Tutup Jendela",
     "Close Workspace": "Tutup Ruang Kerja",
     "Exit": "Keluar",
+    "Share": "Bagikan",
 
     # Edit Menu Actions
     "Undo": "Urungkan",
@@ -175,6 +183,58 @@ EXACT_PHRASES = {
     "Check for Updates...": "Periksa Pembaruan...",
     "About": "Tentang",
 
+    # Antigravity & AI UI Panels
+    "Sessions": "Sesi",
+    "Session": "Sesi",
+    "New Session": "Sesi Baru",
+    "Automations": "Otomasi",
+    "Automation": "Otomasi",
+    "Create Automation": "Buat Otomasi",
+    "New Automation": "Otomasi Baru",
+    "Chats": "Obrolan",
+    "Chat": "Obrolan",
+    "Customizations": "Kustomisasi",
+    "Overview": "Ringkasan",
+    "Plugins": "Plugin",
+    "Plugin": "Plugin",
+    "Canvases": "Kanvas",
+    "Canvas": "Kanvas",
+    "MCP Servers": "Server MCP",
+    "Skills": "Keahlian (Skills)",
+    "Skill": "Keahlian (Skill)",
+    "Instructions": "Instruksi",
+    "Instruction": "Instruksi",
+    "Agents": "Agen",
+    "Agent": "Agen",
+    "Hooks": "Kait (Hooks)",
+    "Hook": "Kait (Hook)",
+    "Tools": "Alat",
+    "Tool": "Alat",
+    "Changes": "Perubahan",
+    "Files": "Berkas",
+    "This Computer": "Komputer Ini",
+    "Cabang (Branch)": "Cabang",
+    "Branch": "Cabang",
+    "Copilot": "Copilot",
+    "Chat with Copilot": "Mengobrol dengan Copilot",
+    "Time to lock in, {0}": "Waktunya fokus koding, {0}",
+    "Time to lock in": "Waktunya fokus koding",
+    "Pitch your idea": "Tulis ide atau tugas Anda...",
+    "Review Migrations": "Tinjau Migrasi",
+    "Review Plan": "Tinjau Rencana",
+    "Interactive": "Interaktif",
+    "Manual permissions": "Izin manual",
+    "Auto": "Otomatis",
+    "Standard": "Standar",
+    "Full Access": "Akses Penuh",
+    "Default Permissions": "Izin Bawaan",
+    "Balance": "Seimbang",
+    "Efficiency": "Efisiensi",
+    "High": "Tinggi",
+    "Low": "Rendah",
+    "Medium": "Sedang",
+    "Ask anything, @ to mention, / for actions": "Tanyakan apa saja, ketik @ untuk menyebutkan, / untuk tindakan",
+
     # Dialog Buttons & Common UI
     "OK": "OK",
     "Cancel": "Batal",
@@ -219,45 +279,43 @@ EXACT_PHRASES = {
     "Restart": "Mulai Ulang",
     "Loading...": "Memuat...",
     "No results found": "Tidak ada hasil ditemukan",
-    "Type to search": "Ketik untuk mencari",
-
-    # Modern Copilot & Chat
-    "Chat": "Obrolan (Chat)",
-    "Copilot": "Copilot",
-    "Chat with Copilot": "Mengobrol dengan Copilot",
-    "Inline Chat": "Obrolan Sebaris",
-    "Generate Code": "Hasilkan Kode",
-    "Explain This": "Jelaskan Ini",
-    "Fix This": "Perbaiki Ini",
-    "Generate Unit Tests": "Hasilkan Pengujian Unit",
-    "Attach Context": "Lampirkan Konteks",
-    "Send": "Kirim",
-    "Stop": "Berhenti",
-    "Clear Chat": "Bersihkan Obrolan",
-
-    # SCM / Git
-    "Commit": "Komit (Commit)",
-    "Commit and Push": "Komit dan Dorong (Commit & Push)",
-    "Commit and Sync": "Komit dan Sinkronkan",
-    "Stage All Changes": "Tandai Semua Perubahan (Stage All)",
-    "Unstage All Changes": "Batalkan Tanda Semua Perubahan (Unstage All)",
-    "Discard All Changes": "Buang Semua Perubahan",
-    "Push": "Dorong (Push)",
-    "Pull": "Tarik (Pull)",
-    "Fetch": "Ambil (Fetch)",
-    "Branch": "Cabang (Branch)",
-    "Merge": "Gabungkan (Merge)",
-    "Stash": "Simpan Sementara (Stash)",
-    "Pop Stash": "Keluarkan Simpanan Sementara (Pop Stash)",
-    "Apply Stash": "Terapkan Simpanan Sementara",
-    "Synchronize Changes": "Sinkronkan Perubahan",
-    "Publish Branch": "Publikasikan Cabang",
-    "Initialize Repository": "Inisialisasi Repositori",
-    "Clone Repository": "Kloning Repositori",
-    "Open Repository": "Buka Repositori"
+    "Type to search": "Ketik untuk mencari"
 }
 
-# 2. Peta Awalan Kalimat / Pola Kalimat (Sentence Pattern Rules)
+# 2. Peta Mnemonic Khusus (& atau &&)
+MNEMONIC_MAP = {
+    "New File": "&&Berkas Baru...",
+    "New Window": "Jendela &&Baru",
+    "Open...": "&&Buka...",
+    "Open File...": "&&Buka Berkas...",
+    "Open Folder...": "Buka &&Folder...",
+    "Open Workspace from File...": "Buka Ruang &&Kerja dari Berkas...",
+    "Open Recent": "Buka &&Terkini",
+    "Add Folder to Workspace...": "T&&ambahkan Folder ke Ruang Kerja...",
+    "Save Workspace As...": "Simpan Ruang Kerja Seb&&agai...",
+    "Save": "&&Simpan",
+    "Save As...": "Simpan Seb&&agai...",
+    "Save All": "Simpan Sem&&ua",
+    "Auto Save": "Simpan &&Otomatis",
+    "Revert File": "Kem&&balikan Berkas",
+    "Close Editor": "&&Tutup Editor",
+    "Close Folder": "Tutup &&Folder",
+    "Close Window": "Tutup &&Jendela",
+    "Close Workspace": "Tutup Ruang &&Kerja",
+    "Undo": "&&Urungkan",
+    "Redo": "&&Ulangi",
+    "Cut": "Po&&tong",
+    "Copy": "&&Salin",
+    "Paste": "&&Tempel",
+    "Find": "&&Cari",
+    "Replace": "&&Ganti",
+    "Select All": "Pilih &&Semua",
+    "Yes": "&&Ya",
+    "No": "&&Tidak",
+    "Close": "&&Tutup"
+}
+
+# 3. Pola Kalimat (Sentence Pattern Rules)
 PATTERNS = [
     (r"^Controls whether the editor should automatically (.+)\.$", r"Mengontrol apakah editor harus otomatis \1."),
     (r"^Controls whether the editor should (.+)\.$", r"Mengontrol apakah editor harus \1."),
@@ -324,7 +382,7 @@ PATTERNS = [
     (r"^Sort by (.+)$", r"Urutkan berdasarkan \1")
 ]
 
-# 3. Kata & Frasa Teknis (Word Substitutions)
+# 4. Substitusi Kata & Istilah Teknis
 WORD_REPLACEMENTS = [
     ("command palette", "palet perintah"),
     ("keyboard shortcuts", "pintasan papan ketik"),
@@ -436,21 +494,43 @@ WORD_REPLACEMENTS = [
     ("automatically", "secara otomatis")
 ]
 
+# Istilah terkontaminasi/rusak dari pack lama yang HARUS dibersihkan
+CONTAMINATED_PATTERNS = [
+    (r"\bworkspace from berkas\b", "ruang kerja dari berkas"),
+    (r"\bruang kerja from berkas\b", "ruang kerja dari berkas"),
+    (r"\bfrom berkas\b", "dari berkas"),
+    (r"\bwor&&kspace from berkas\b", "ruang &&kerja dari berkas"),
+    (r"\ba&&dd folder to workspace\b", "t&&ambahkan folder ke ruang kerja"),
+    (r"\badd folder to workspace\b", "tambahkan folder ke ruang kerja"),
+    (r"\bsimpan as\b", "simpan sebagai"),
+    (r"\bsimpan all\b", "simpan semua"),
+    (r"\b&&open\b", "&&buka"),
+    (r"\b&&save\b", "&&simpan"),
+    (r"\bcu&&t\b", "po&&tong"),
+    (r"\bclose editor\b", "tutup editor"),
+    (r"\bclose window\b", "tutup jendela"),
+    (r"\bnew file\b", "berkas baru"),
+    (r"\bnew window\b", "jendela baru")
+]
+
+def clean_contaminated(text: str) -> str:
+    if not isinstance(text, str):
+        return text
+    res = text
+    for pat, rep in CONTAMINATED_PATTERNS:
+        res = re.sub(pat, rep, res, flags=re.IGNORECASE)
+    return res
+
 def protect_tokens(text: str):
-    """Melindungi placeholder ({0}, %s, markdown links, code blocks) agar tidak terganggu terjemahan."""
     tokens = []
     def repl(m):
         tokens.append(m.group(0))
         return f"__TOK_{len(tokens)-1}__"
 
-    # 1. Placeholders {0}, {1}, %s, $1, dll
     text = re.sub(r"\{[0-9]+\}", repl, text)
     text = re.sub(r"\%[0-9]*\$?[a-zA-Z]", repl, text)
-    # 2. Markdown links [text](url)
     text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", repl, text)
-    # 3. Code blocks `code`
     text = re.sub(r"`[^`]+`", repl, text)
-    
     return text, tokens
 
 def restore_tokens(text: str, tokens):
@@ -459,34 +539,39 @@ def restore_tokens(text: str, tokens):
     return text
 
 def translate_string(src: str) -> str:
-    """Menerjemahkan satu string bahasa Inggris ke Bahasa Indonesia dengan kaidah glosarium."""
     if not src or not src.strip():
         return src
 
-    # Jika hanya angka, tanda baca, atau placeholder
     if re.match(r"^[\s\{\}0-9\(\)\:\,\.\-\_\"\'\%\$\/\\]+$", src):
         return src
 
-    # 1. Cek Exact Phrase
+    has_double_amp = "&&" in src
+    has_single_amp = src.startswith("&") and not has_double_amp
+
+    # Bersihkan mnemonik untuk pencocokan kamus
+    clean_src = src.replace("&&", "").lstrip("&").strip()
+
+    # 1. Cek kamus mnemonik khusus
+    if clean_src in MNEMONIC_MAP and (has_double_amp or has_single_amp):
+        return MNEMONIC_MAP[clean_src]
+
+    # 2. Cek Exact Phrase
+    if clean_src in EXACT_PHRASES:
+        id_val = EXACT_PHRASES[clean_src]
+        if has_double_amp:
+            return "&&" + id_val
+        elif has_single_amp:
+            return "&" + id_val
+        return id_val
+
+    # 3. Cek frase asli langsung
     if src in EXACT_PHRASES:
         return EXACT_PHRASES[src]
 
-    # Cek tanpa spasi tepi
-    stripped = src.strip()
-    if stripped in EXACT_PHRASES:
-        res = EXACT_PHRASES[stripped]
-        if src.startswith(" "): res = " " + res
-        if src.endswith(" "): res = res + " "
-        return res
-
-    # 2. Cek Akses Cepat Mnemonic (&Word)
-    if src.startswith("&") and src[1:] in EXACT_PHRASES:
-        return "&" + EXACT_PHRASES[src[1:]]
-
     # Lindungi token dinamis
-    protected_text, tokens = protect_tokens(src)
+    protected_text, tokens = protect_tokens(clean_src)
 
-    # 3. Cek Pola Kalimat (Patterns)
+    # 4. Pola Kalimat
     matched_pattern = False
     for pat, rep in PATTERNS:
         if re.search(pat, protected_text, re.IGNORECASE):
@@ -494,19 +579,22 @@ def translate_string(src: str) -> str:
             matched_pattern = True
             break
 
-    # 4. Jika cocok pola atau belum, terjemahkan kata/frasa teknis di dalamnya
+    # 5. Substitusi Istilah Teknis
     if matched_pattern:
         for en_word, id_word in WORD_REPLACEMENTS:
-            # Ganti kata dengan batas kata (word boundaries)
             pattern = r"\b" + re.escape(en_word) + r"\b"
             protected_text = re.sub(pattern, id_word, protected_text, flags=re.IGNORECASE)
 
-    # Pulihkan token
     result = restore_tokens(protected_text, tokens)
+    result = clean_contaminated(result)
+
+    if has_double_amp and not ("&&" in result):
+        result = "&&" + result
+
     return result
 
 def main():
-    print("=== Membangun Terjemahan Penuh VS Code Modern ===")
+    print("=== Membangun Terjemahan VS Code & Antigravity (Pembersihan Total) ===")
     
     meta_path = "/Applications/Visual Studio Code.app/Contents/Resources/app/out/nls.metadata.json"
     if not os.path.exists(meta_path):
@@ -517,7 +605,6 @@ def main():
     with open(meta_path, "r", encoding="utf-8") as f:
         meta = json.load(f)
 
-    # Baca terjemahan yang sudah ada dari deprecated pack
     local_main_path = "translations/main.i18n.json"
     existing_contents = {}
     if os.path.exists(local_main_path):
@@ -530,6 +617,7 @@ def main():
     total_strings = 0
     preserved_count = 0
     translated_count = 0
+    cleaned_count = 0
 
     for mod_name, keys in meta["keys"].items():
         msgs = meta["messages"].get(mod_name, [])
@@ -540,23 +628,31 @@ def main():
             k_str = k["key"] if isinstance(k, dict) else k
             total_strings += 1
 
-            # Jika sudah ada terjemahan lama yang bagus dan bukan bahasa inggris mentah
-            if k_str in existing_mod:
+            # Cek apakah modul ini adalah bagian menu penting atau sessions
+            is_critical_menu = any(x in mod_name.lower() for x in ["workspaceactions", "editoractions", "windowactions", "fileactions", "sessions", "agenthost"])
+
+            # Cek apakah ada terjemahan lama
+            if k_str in existing_mod and not is_critical_menu:
                 old_val = existing_mod[k_str]
-                # Jika terjemahan lama berbeda dengan bahasa Inggris atau ada di kamus
+                # Periksa apakah terkontaminasi bahasa Inggris
+                cleaned_val = clean_contaminated(old_val)
+                if cleaned_val != old_val:
+                    cleaned_count += 1
+                    mod_dict[k_str] = cleaned_val
+                    continue
+
                 if old_val != en_msg:
                     mod_dict[k_str] = old_val
                     preserved_count += 1
                     continue
 
-            # Menerjemahkan dengan engine
+            # Menerjemahkan dengan engine yang sudah di-upgrade
             translated_val = translate_string(en_msg)
             mod_dict[k_str] = translated_val
             translated_count += 1
 
         new_contents[mod_name] = mod_dict
 
-    # Tulis translations/main.i18n.json
     final_main = {
         "": [
             "--------------------------------------------------------------------------------------------",
@@ -573,10 +669,11 @@ def main():
     with open(local_main_path, "w", encoding="utf-8") as f:
         json.dump(final_main, f, indent=2, ensure_ascii=False)
 
-    print(f"   • Total Modul Terjemahan: {len(new_contents):,}")
-    print(f"   • Total String: {total_strings:,}")
-    print(f"   • Terjemahan Dipertahankan: {preserved_count:,}")
-    print(f"   • Terjemahan Baru Dibuat: {translated_count:,}")
+    print(f"   • Total Modul Terjemahan : {len(new_contents):,}")
+    print(f"   • Total String           : {total_strings:,}")
+    print(f"   • Teks Lama Dipertahankan: {preserved_count:,}")
+    print(f"   • Teks Diterjemahkan Baru: {translated_count:,}")
+    print(f"   • Teks Rusak Dibersihkan : {cleaned_count:,}")
 
     # 4. Memproses ekstensi bawaan (Built-in Extensions)
     print("\n4. Memproses ekstensi bawaan VS Code...")
@@ -611,30 +708,14 @@ def main():
         dest_filename = f"{ext_id}.i18n.json"
         dest_path = os.path.join("translations/extensions", dest_filename)
 
-        # Cek apakah ada file lama
-        existing_ext_data = {}
-        if os.path.exists(dest_path):
-            try:
-                with open(dest_path, "r", encoding="utf-8") as f:
-                    existing_ext_data = json.load(f).get("contents", {})
-            except Exception:
-                pass
-
-        # Terjemahkan string ekstensi
         ext_contents = {}
         for k, v in nls_data.items():
             ext_string_count += 1
             if isinstance(v, dict):
                 msg_val = v.get("message", "")
-                if k in existing_ext_data:
-                    ext_contents[k] = existing_ext_data[k]
-                else:
-                    ext_contents[k] = translate_string(msg_val) if msg_val else v
+                ext_contents[k] = translate_string(msg_val) if msg_val else v
             elif isinstance(v, str):
-                if k in existing_ext_data and existing_ext_data[k] != v:
-                    ext_contents[k] = existing_ext_data[k]
-                else:
-                    ext_contents[k] = translate_string(v)
+                ext_contents[k] = translate_string(v)
             else:
                 ext_contents[k] = v
 
@@ -666,7 +747,7 @@ def main():
         "name": "vscode-language-pack-id",
         "displayName": "Indonesian Language Pack for Visual Studio Code",
         "description": "Paket Bahasa Indonesia resmi dan modern untuk Visual Studio Code",
-        "version": "1.144.0",
+        "version": "1.144.1",
         "publisher": "mrmarc",
         "license": "MIT",
         "homepage": "https://github.com/Mrmarc-bit/vscode-language-pack-id#readme",
@@ -705,6 +786,7 @@ def main():
         "scripts": {
             "validate": "python3 scripts/validate.py",
             "link-local": "python3 scripts/install_local.py",
+            "build-vsix": "python3 scripts/build_vsix.py",
             "sync": "python3 scripts/sync_upstream.py"
         }
     }
@@ -713,7 +795,7 @@ def main():
         json.dump(pkg, f, indent=2, ensure_ascii=False)
 
     print(f"   • package.json diperbarui dengan {len(registered_translations)} modul terdaftar.")
-    print("\n🎉 SELURUH TERJEMAHAN VS CODE MODERN BERHASIL DIGENERATE LENGKAP!")
+    print("\n🎉 GENERASI ULANG TERJEMAHAN SELESAI DENGAN SEMPURNA!")
 
 if __name__ == "__main__":
     main()

@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "Git Base",
-    "description": "Git static contributions and pickers.",
+    "description": "Git static contributions dan pickers.",
     "command.api.getRemoteSources": "Get Remote Sources"
   }
 }

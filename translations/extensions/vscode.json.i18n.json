@@ -8,6 +8,6 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "JSON Language Basics",
-    "description": "Provides syntax highlighting & bracket matching in JSON files."
+    "description": "Provides syntax highlighting & bracket matching in JSON berkas."
   }
 }

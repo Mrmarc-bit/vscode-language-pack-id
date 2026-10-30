@@ -8,6 +8,6 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "Dart Language Basics",
-    "description": "Provides syntax highlighting & bracket matching in Dart files."
+    "description": "Provides syntax highlighting & bracket matching in Dart berkas."
   }
 }

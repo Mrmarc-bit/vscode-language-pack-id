@@ -8,6 +8,6 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "reStructuredText Language Basics",
-    "description": "Provides syntax highlighting in reStructuredText files."
+    "description": "Provides syntax highlighting in reStructuredText berkas."
   }
 }

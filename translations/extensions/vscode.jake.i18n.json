@@ -7,10 +7,10 @@
   ],
   "version": "1.0.0",
   "contents": {
-    "description": "Extension to add Jake capabilities to VS Code.",
-    "displayName": "Jake support for VS Code",
+    "description": "ekstensi to add Jake capabilities to VS Code.",
+    "displayName": "Jake support untuk VS Code",
     "jake.taskDefinition.type.description": "The Jake task to customize.",
-    "jake.taskDefinition.file.description": "The Jake file that provides the task. Can be omitted.",
-    "config.jake.autoDetect": "Controls enablement of Jake task detection. Jake task detection can cause files in any open workspace to be executed."
+    "jake.taskDefinition.file.description": "The Jake berkas that provides the task. Can be omitted.",
+    "config.jake.autoDetect": "Mengontrol enablement of Jake task detection. Jake task detection can cause berkas in any buka ruang kerja to be executed."
   }
 }

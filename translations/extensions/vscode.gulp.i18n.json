@@ -7,10 +7,10 @@
   ],
   "version": "1.0.0",
   "contents": {
-    "description": "Extension to add Gulp capabilities to VSCode.",
-    "displayName": "Gulp support for VSCode",
-    "config.gulp.autoDetect": "Controls enablement of Gulp task detection. Gulp task detection can cause files in any open workspace to be executed.",
+    "description": "ekstensi to add Gulp capabilities to VSCode.",
+    "displayName": "Gulp support untuk VSCode",
+    "config.gulp.autoDetect": "Mengontrol enablement of Gulp task detection. Gulp task detection can cause berkas in any buka ruang kerja to be executed.",
     "gulp.taskDefinition.type.description": "The Gulp task to customize.",
-    "gulp.taskDefinition.file.description": "The Gulp file that provides the task. Can be omitted."
+    "gulp.taskDefinition.file.description": "The Gulp berkas that provides the task. Can be omitted."
   }
 }

@@ -7,15 +7,15 @@
   ],
   "version": "1.0.0",
   "contents": {
-    "configuration.suggest.basic": "Mengontrol apakah the built-in PHP language saran are diaktifkan. The support suggests PHP globals and variabel.",
-    "configuration.validate.enable": "Enable/disable built-in PHP validation.",
+    "configuration.suggest.basic": "Mengontrol apakah the built-in PHP language suggestions are diaktifkan. The support suggests PHP globals dan variables.",
+    "configuration.validate.enable": "Aktifkan/nonaktifkan built-in PHP validation.",
     "configuration.validate.executablePath": "Points to the PHP executable.",
-    "configuration.validate.run": "Whether the linter is run on save or on type.",
+    "configuration.validate.run": "Apakah the linter is jalankan on simpan atau on type.",
     "configuration.title": "PHP",
     "commands.categroy.php": "PHP",
-    "command.untrustValidationExecutable": "Disallow PHP validation executable (defined as workspace setting)",
+    "command.untrustValidationExecutable": "Disallow PHP validation executable (defined as ruang kerja pengaturan)",
     "displayName": "PHP Language Features",
-    "description": "Provides rich language support for PHP files.",
-    "workspaceTrust": "The extension requires workspace trust when the `php.validate.executablePath` setting will load a version of PHP in the workspace."
+    "description": "Provides rich language support untuk PHP berkas.",
+    "workspaceTrust": "The ekstensi requires ruang kerja trust when the `php.validate.executablePath` pengaturan will load a version of PHP in the ruang kerja."
   }
 }

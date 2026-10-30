@@ -7,7 +7,7 @@
   ],
   "version": "1.0.0",
   "contents": {
-    "displayName": "Cari Result",
-    "description": "Provides syntax highlighting and language features for tabbed search results."
+    "displayName": "cari Result",
+    "description": "Provides syntax highlighting dan language features untuk tabbed cari results."
   }
 }

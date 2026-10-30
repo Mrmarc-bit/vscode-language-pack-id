@@ -8,6 +8,6 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "LaTeX Language Basics",
-    "description": "Provides syntax highlighting and bracket matching for TeX, LaTeX and BibTeX."
+    "description": "Provides syntax highlighting dan bracket matching untuk TeX, LaTeX dan BibTeX."
   }
 }

@@ -1,60 +1,79 @@
 #!/usr/bin/env python3
 """
-Memasang ekstensi ini ke instalasi VS Code lokal untuk pengujian langsung (local preview).
-Membuat tautan simbolik (symlink) di ~/.vscode/extensions/
+Memasang ekstensi ini ke instalasi VS Code / Antigravity lokal untuk pengujian langsung (local preview).
+Membuat tautan simbolik (symlink) atau menyalin ke direktori ekstensi editor.
 """
 
 import os
 import sys
+import json
 import shutil
-import platform
 
 def main():
     home_dir = os.path.expanduser("~")
     current_dir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     
-    # Lokasi direktori ekstensi VS Code
-    vscode_ext_dir = os.path.join(home_dir, ".vscode", "extensions")
-    target_folder_name = "nusantara-dev.vscode-language-pack-id-1.0.0"
-    target_path = os.path.join(vscode_ext_dir, target_folder_name)
+    # Baca publisher, nama, dan versi dari package.json
+    pkg_path = os.path.join(current_dir, "package.json")
+    with open(pkg_path, "r", encoding="utf-8") as f:
+        pkg = json.load(f)
+    
+    publisher = pkg.get("publisher", "mrmarc")
+    name = pkg.get("name", "vscode-language-pack-id")
+    version = pkg.get("version", "1.144.0")
+    target_folder_name = f"{publisher}.{name}-{version}"
 
-    print("=== Pemasangan Ekstensi ke VS Code Lokal ===")
-    print(f"Direktori Proyek: {current_dir}")
-    print(f"Target VS Code Extensions: {target_path}")
+    print("=== Pemasangan Indonesian Language Pack ke Editor Lokal ===")
+    print(f"Direktori Sumber : {current_dir}")
+    print(f"ID Folder        : {target_folder_name}")
 
-    if not os.path.exists(vscode_ext_dir):
-        print(f"Direktori {vscode_ext_dir} belum ada. Membuat direktori...")
-        os.makedirs(vscode_ext_dir, exist_ok=True)
+    # Daftar target direktori ekstensi yang mungkin digunakan VS Code atau Antigravity
+    target_ext_dirs = [
+        os.path.join(home_dir, ".vscode", "extensions"),
+        os.path.join(home_dir, ".antigravity", "extensions"),
+        os.path.join(home_dir, ".gemini", "antigravity", "extensions"),
+        os.path.join(home_dir, "Library", "Application Support", "Code", "extensions"),
+        os.path.join(home_dir, "Library", "Application Support", "Antigravity", "extensions")
+    ]
 
-    # Jika sudah ada symlink atau folder sebelumnya, hapus dulu
-    if os.path.islink(target_path) or os.path.exists(target_path):
-        print(f"Menghapus instalasi sebelumnya di {target_path}...")
-        if os.path.islink(target_path) or os.path.isfile(target_path):
-            os.unlink(target_path)
-        else:
-            shutil.rmtree(target_path)
+    installed_paths = []
 
-    # Buat symlink
-    try:
-        os.symlink(current_dir, target_path, target_is_directory=True)
-        print("\n🎉 Berhasil menautkan ekstensi secara lokal!")
-        print("\nLangkah selanjutnya untuk mengaktifkan:")
-        print("1. Buka (atau restart jika sedang terbuka) aplikasi VS Code Anda.")
-        print("2. Tekan pintasan Cmd+Shift+P (di Mac) atau Ctrl+Shift+P (di Windows/Linux).")
-        print("3. Ketik perintah: 'Configure Display Language'.")
-        print("4. Pilih 'Bahasa Indonesia' (Indonesian).")
-        print("5. Klik 'Restart' ketika diminta oleh VS Code.")
-        print("6. Selamat! Seluruh antarmuka VS Code Anda sekarang berbahasa Indonesia.")
-    except Exception as e:
-        print(f"❌ Gagal membuat symlink: {e}")
-        print("Mencoba menyalin folder secara manual sebagai alternatif...")
+    for ext_dir in target_ext_dirs:
         try:
-            shutil.copytree(current_dir, target_path, ignore=shutil.ignore_patterns('.git', 'node_modules'))
-            print("✅ Berhasil menyalin folder ke direktori ekstensi!")
-        except Exception as copy_err:
-            print(f"❌ Gagal menyalin: {copy_err}")
-            sys.exit(1)
+            os.makedirs(ext_dir, exist_ok=True)
+            target_path = os.path.join(ext_dir, target_folder_name)
+
+            if os.path.islink(target_path) or os.path.exists(target_path):
+                if os.path.islink(target_path) or os.path.isfile(target_path):
+                    os.unlink(target_path)
+                else:
+                    shutil.rmtree(target_path)
+
+            try:
+                os.symlink(current_dir, target_path, target_is_directory=True)
+                installed_paths.append(target_path)
+            except Exception:
+                shutil.copytree(current_dir, target_path, ignore=shutil.ignore_patterns('.git', 'node_modules', '*.vsix'))
+                installed_paths.append(target_path)
+        except Exception:
+            pass
+
+    if installed_paths:
+        print("\n🎉 Berhasil memasang ekstensi ke direktori berikut:")
+        for p in installed_paths:
+            print(f"   • {p}")
+
+        print("\n-------------------------------------------------------------")
+        print("LANGKAH MENGAKTIFKAN BAHASA INDONESIA:")
+        print("1. TUTUP SEPENUHNYA aplikasi VS Code / Antigravity (Cmd + Q).")
+        print("2. Buka kembali VS Code / Antigravity.")
+        print("3. Tekan pintasan Cmd + Shift + P.")
+        print("4. Ketik: 'Configure Display Language' lalu tekan Enter.")
+        print("5. Pilih 'Bahasa Indonesia' (Indonesian).")
+        print("6. Klik 'Restart'.")
+        print("-------------------------------------------------------------")
+    else:
+        print("❌ Gagal memasang otomatis. Silakan gunakan metode VSIX!")
 
 if __name__ == "__main__":
     main()
-

@@ -7,7 +7,7 @@
   ],
   "version": "1.0.0",
   "contents": {
-    "displayName": "Builtin Notebook Output Renderers",
-    "description": "Provides basic output renderers for notebooks"
+    "displayName": "Builtin Notebook keluaran Renderers",
+    "description": "Provides basic keluaran renderers untuk notebooks"
   }
 }

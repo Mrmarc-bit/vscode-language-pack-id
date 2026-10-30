@@ -8,6 +8,6 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "Configuration Editing",
-    "description": "Provides capabilities (advanced IntelliSense, auto-fixing) in configuration files like settings, launch, and extension recommendation files."
+    "description": "Provides capabilities (advanced IntelliSense, auto-fixing) in configuration berkas like pengaturan, launch, dan ekstensi recommendation berkas."
   }
 }

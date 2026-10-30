@@ -8,16 +8,16 @@
   "version": "1.0.0",
   "contents": {
     "displayName": ".ipynb Support",
-    "description": "Provides basic support for opening and reading Jupyter's .ipynb notebook files",
-    "ipynb.pasteImagesAsAttachments.enabled": "Enable/disable pasting of images into Markdown cells in ipynb notebook files. Pasted images are inserted as attachments to the cell.",
+    "description": "Provides basic support untuk membuka dan reading Jupyter's .ipynb notebook berkas",
+    "ipynb.pasteImagesAsAttachments.enabled": "Aktifkan/nonaktifkan menempelkan of images ke Markdown cells in ipynb notebook berkas. ditempelkan images are inserted as attachments to the cell.",
     "ipynb.experimental.serialization": "Experimental feature to serialize the Jupyter notebook in a worker thread.",
     "newUntitledIpynb.title": "New Jupyter Notebook",
     "newUntitledIpynb.shortTitle": "Jupyter Notebook",
-    "openIpynbInNotebookEditor.title": "Buka IPYNB berkas In Notebook editor",
+    "openIpynbInNotebookEditor.title": "buka IPYNB berkas In Notebook editor",
     "cleanInvalidImageAttachment.title": "Clean Invalid Image Attachment Reference",
-    "copyCellOutput.title": "Salin Cell keluaran (output)",
-    "addCellOutputToChat.title": "Tambah Cell keluaran (output) to Chat",
-    "openCellOutput.title": "Buka Cell keluaran (output) in Text editor",
+    "copyCellOutput.title": "salin Cell keluaran",
+    "addCellOutputToChat.title": "Tambah Cell keluaran to Chat",
+    "openCellOutput.title": "buka Cell keluaran in Text editor",
     "markdownAttachmentRenderer.displayName": "Markdown-It ipynb Cell Attachment renderer"
   }
 }

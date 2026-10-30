@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "contents": {
     "displayName": "Node Debug Auto-attach",
-    "description": "Helper for auto-attach feature when node-debug extensions are not active.",
+    "description": "Helper untuk auto-attach feature when node-debug ekstensi are not aktif.",
     "toggle.auto.attach": "Alihkan Auto Attach"
   }
 }
