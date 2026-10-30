@@ -2,7 +2,7 @@
 
 > **Membuka akses pemrograman bagi seluruh pengembang Indonesia dengan antarmuka yang ramah, intuitif, dan terkini.**
 
-[![CI Validation](https://github.com/nusantara-dev/vscode-language-pack-id/actions/workflows/ci.yml/badge.svg)](https://github.com/nusantara-dev/vscode-language-pack-id/actions)
+[![CI Validation](https://github.com/Mrmarc-bit/vscode-language-pack-id/actions/workflows/ci.yml/badge.svg)](https://github.com/Mrmarc-bit/vscode-language-pack-id/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -138,3 +138,4 @@ Kontribusi dari seluruh pengembang di Indonesia sangat disambut hangat!
 
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
 Ikon globe merupakan aset milik Visual Studio Code / Microsoft Corporation.
+

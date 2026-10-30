@@ -1,0 +1,23 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "displayName": ".ipynb Support",
+    "description": "Provides basic support for opening and reading Jupyter's .ipynb notebook files",
+    "ipynb.pasteImagesAsAttachments.enabled": "Enable/disable pasting of images into Markdown cells in ipynb notebook files. Pasted images are inserted as attachments to the cell.",
+    "ipynb.experimental.serialization": "Experimental feature to serialize the Jupyter notebook in a worker thread.",
+    "newUntitledIpynb.title": "New Jupyter Notebook",
+    "newUntitledIpynb.shortTitle": "Jupyter Notebook",
+    "openIpynbInNotebookEditor.title": "Buka IPYNB berkas In Notebook editor",
+    "cleanInvalidImageAttachment.title": "Clean Invalid Image Attachment Reference",
+    "copyCellOutput.title": "Salin Cell keluaran (output)",
+    "addCellOutputToChat.title": "Tambah Cell keluaran (output) to Chat",
+    "openCellOutput.title": "Buka Cell keluaran (output) in Text editor",
+    "markdownAttachmentRenderer.displayName": "Markdown-It ipynb Cell Attachment renderer"
+  }
+}

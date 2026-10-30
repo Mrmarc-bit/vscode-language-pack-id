@@ -1,0 +1,13 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "displayName": "CoffeeScript Language Basics",
+    "description": "Provides snippets, syntax highlighting, bracket matching and folding in CoffeeScript files."
+  }
+}

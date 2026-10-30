@@ -63,3 +63,4 @@ Dokumen ini adalah pedoman penerjemahan istilah antarmuka (*UI*) untuk memastika
 * **Perintah CLI / Flag**: `npm run build`, `--verbose`, `git clone`, dll.
 * **Nama Bahasa Pemrograman & Format**: TypeScript, Python, HTML, JSON, YAML, CSS, dll.
 * **Nama Protokol / Standar**: HTTP, SSH, FTP, API, URL, URI, dll.
+

@@ -1,0 +1,15 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "description": "Extension to add terminal completions for zsh, bash, and fish terminals.",
+    "displayName": "Terminal Suggest for VS Code",
+    "view.name": "Terminal Suggest",
+    "terminal.integrated.suggest.clearCachedGlobals": "Bersihkan Suggest Cached Globals"
+  }
+}

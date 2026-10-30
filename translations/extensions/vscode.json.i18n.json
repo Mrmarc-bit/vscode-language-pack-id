@@ -1,0 +1,13 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "displayName": "JSON Language Basics",
+    "description": "Provides syntax highlighting & bracket matching in JSON files."
+  }
+}

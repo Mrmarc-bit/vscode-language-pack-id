@@ -5,3 +5,8 @@ node_modules/
 missing_translations.json
 *.pyc
 __pycache__/
+.agents/
+.f1/
+skills-lock.json
+
+

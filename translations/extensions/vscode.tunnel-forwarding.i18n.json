@@ -1,0 +1,16 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "displayName": "Local Tunnel Port Forwarding",
+    "description": "Allows forwarding local ports to be accessible over the internet.",
+    "category": "Port Forwarding",
+    "command.showLog": "Tampilkan Log",
+    "command.restart": "Mulai Ulang Forwarding System"
+  }
+}

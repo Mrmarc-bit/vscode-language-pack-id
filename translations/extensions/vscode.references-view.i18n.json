@@ -1,0 +1,40 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "displayName": "Reference Search View",
+    "description": "Reference Search results as separate, stable view in the sidebar",
+    "config.references.preferredLocation": "Mengontrol apakah 'Peek referensi' or 'Find referensi' is invoked when selecting CodeLens referensi.",
+    "config.references.preferredLocation.peek": "Tampilkan referensi in peek editor.",
+    "config.references.preferredLocation.view": "Tampilkan referensi in separate view.",
+    "container.title": "References",
+    "view.title": "Reference Search Results",
+    "cmd.category.references": "References",
+    "cmd.references-view.findReferences": "Cari Semua Referensi",
+    "cmd.references-view.findImplementations": "Find All Implementations",
+    "cmd.references-view.clearHistory": "Bersihkan History",
+    "cmd.references-view.clear": "Bersihkan",
+    "cmd.references-view.refresh": "Segarkan",
+    "cmd.references-view.pickFromHistory": "Tampilkan History",
+    "cmd.references-view.removeReferenceItem": "Dismiss",
+    "cmd.references-view.copy": "Salin",
+    "cmd.references-view.copyAll": "Salin All",
+    "cmd.references-view.copyPath": "Salin Jalur",
+    "cmd.references-view.refind": "Rerun",
+    "cmd.references-view.showCallHierarchy": "Tampilkan Call Hierarchy",
+    "cmd.references-view.showOutgoingCalls": "Tampilkan Outgoing Calls",
+    "cmd.references-view.showIncomingCalls": "Tampilkan Incoming Calls",
+    "cmd.references-view.removeCallItem": "Dismiss",
+    "cmd.references-view.next": "Buka Next Reference",
+    "cmd.references-view.prev": "Buka Previous Reference",
+    "cmd.references-view.showTypeHierarchy": "Tampilkan Type Hierarchy",
+    "cmd.references-view.showSupertypes": "Tampilkan Supertypes",
+    "cmd.references-view.showSubtypes": "Tampilkan Subtypes",
+    "cmd.references-view.removeTypeItem": "Dismiss"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "displayName": "Tomorrow Night Blue Theme",
+    "description": "Tomorrow night blue theme for Visual Studio Code",
+    "themeLabel": "Tomorrow Night Blue"
+  }
+}

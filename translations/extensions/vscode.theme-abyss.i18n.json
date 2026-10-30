@@ -1,0 +1,14 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "displayName": "Abyss Theme",
+    "description": "Abyss theme for Visual Studio Code",
+    "themeLabel": "Abyss"
+  }
+}

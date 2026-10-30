@@ -1,0 +1,14 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "displayName": "Node Debug Auto-attach",
+    "description": "Helper for auto-attach feature when node-debug extensions are not active.",
+    "toggle.auto.attach": "Alihkan Auto Attach"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "": [
+    "--------------------------------------------------------------------------------------------",
+    "Copyright (c) Microsoft Corporation. All rights reserved.",
+    "Licensed under the MIT License.",
+    "--------------------------------------------------------------------------------------------"
+  ],
+  "version": "1.0.0",
+  "contents": {
+    "displayName": "Git Base",
+    "description": "Git static contributions and pickers.",
+    "command.api.getRemoteSources": "Get Remote Sources"
+  }
+}
