@@ -19,7 +19,7 @@ def build_vsix():
     publisher = pkg.get("publisher", "MarufMuchlisin")
     name = pkg.get("name", "indonesian-language-pack")
     version = pkg.get("version", "1.144.2")
-    display_name = pkg.get("displayName", "Indonesian Language Pack for Visual Studio Code")
+    display_name = pkg.get("displayName", "Bahasa Indonesia - Indonesian Language Pack")
     description = pkg.get("description", "Paket Bahasa Indonesia resmi dan modern untuk Visual Studio Code")
     engine = pkg.get("engines", {}).get("vscode", "^1.80.0")
     homepage = pkg.get("homepage", "https://github.com/Mrmarc-bit/vscode-language-pack-id#readme")
